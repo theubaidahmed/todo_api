@@ -1,6 +1,6 @@
-const Todo = require("./../../schemas/Todo");
+import Todo from '../../schemas/Todo.js';
 
-module.exports = function (req, res) {
+export default function (req, res) {
     const { id } = req.params;
     const { name } = req.body;
 
@@ -11,4 +11,4 @@ module.exports = function (req, res) {
             });
         })
         .catch(res.end);
-};
+}

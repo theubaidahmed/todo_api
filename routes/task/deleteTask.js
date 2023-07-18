@@ -1,6 +1,6 @@
-const Todo = require("../../schemas/Todo");
+import Todo from '../../schemas/Todo.js';
 
-module.exports = function (req, res) {
+export default function (req, res) {
     const { todoId } = req.params;
     const { taskId } = req.params;
 
@@ -9,4 +9,4 @@ module.exports = function (req, res) {
             res.json({ success: result.modifiedCount });
         })
         .catch(res.end);
-};
+}

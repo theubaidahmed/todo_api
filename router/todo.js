@@ -1,14 +1,14 @@
-const express = require("express");
+import express from 'express';
 
-const createTodo = require("../routes/todo/createTodo");
-const deleteTodo = require("../routes/todo/deleteTodo");
-const renameTodo = require("../routes/todo/renameTodo");
+import createTodo from '../routes/todo/createTodo.js';
+import deleteTodo from '../routes/todo/deleteTodo.js';
+import renameTodo from '../routes/todo/renameTodo.js';
 
 const todo = express.Router();
 
-todo.post("/create", createTodo);
+todo.post('/create', createTodo);
 // todo.get("/", viewTask);
-todo.delete("/delete/:id", deleteTodo);
-todo.patch("/rename/:id", renameTodo);
+todo.delete('/delete/:id', deleteTodo);
+todo.patch('/rename/:id', renameTodo);
 
-module.exports = todo;
+export default todo;

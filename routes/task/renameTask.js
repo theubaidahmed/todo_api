@@ -1,13 +1,13 @@
-const Todo = require("./../../schemas/Todo");
+import Todo from '../../schemas/Todo.js';
 
-module.exports = function (req, res) {
+export default function (req, res) {
     const { todoId } = req.params;
     const { taskId } = req.params;
     const { task } = req.body;
 
     Todo.updateOne(
         { _id: todoId, tasks: { $elemMatch: { _id: taskId } } },
-        { $set: { "tasks.$.task": task } }
+        { $set: { 'tasks.$.task': task } }
     )
         .then(result => {
             res.json({
@@ -15,4 +15,4 @@ module.exports = function (req, res) {
             });
         })
         .catch(e => res.end(e));
-};
+}

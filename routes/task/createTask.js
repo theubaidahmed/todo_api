@@ -1,11 +1,11 @@
-const Todo = require("../../schemas/Todo");
+import Todo from '../../schemas/Todo.js';
 
-module.exports = async function (req, res) {
+export default async function (req, res) {
     const { tasks } = req.body;
     const { id } = req.params;
 
     console.log(tasks);
-    if (!tasks.length || !id) return res.end("Add task first");
+    if (!tasks.length || !id) return res.end('Add task first');
 
     Todo.updateOne({ _id: id }, { $push: { tasks: tasks.map(task => ({ task })) } })
         .then(result => {
@@ -22,4 +22,4 @@ module.exports = async function (req, res) {
         });
 
     // console.log((await Todo.findById(id)).completed);
-};
+}

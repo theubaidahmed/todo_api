@@ -1,8 +1,8 @@
-const Todo = require("../../schemas/Todo");
+import Todo from '../../schemas/Todo.js';
 
-module.exports = function (req, res) {
+export default function (req, res) {
     const { name } = req.query;
-    if (!name) res.end("Todo Name is required");
+    if (!name) res.end('Todo Name is required');
 
     const todo = new Todo({
         name,
@@ -16,8 +16,8 @@ module.exports = function (req, res) {
     } catch (e) {
         res.json({
             success: 0,
-            error: "something went wrong",
+            error: 'something went wrong',
             e,
         });
     }
-};
+}

@@ -1,6 +1,6 @@
-const Todo = require("../../schemas/Todo");
+import Todo from '../../schemas/Todo.js';
 
-module.exports = function (req, res) {
+export default function (req, res) {
     const { todoId } = req.params;
     const { taskId } = req.params;
 
@@ -8,10 +8,10 @@ module.exports = function (req, res) {
 
     Todo.updateOne(
         { _id: todoId, tasks: { $elemMatch: { _id: taskId } } },
-        { $set: { "tasks.$.completed": true } }
+        { $set: { 'tasks.$.completed': true } }
     )
         .then(result => {
             res.json({ success: result.modifiedCount });
         })
         .catch(err => res.end(err));
-};
+}

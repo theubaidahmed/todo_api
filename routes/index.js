@@ -1,6 +1,6 @@
-const Todo = require("../schemas/Todo");
+import Todo from '../schemas/Todo.js';
 
-module.exports = async function (req, res) {
+export default async function (req, res) {
     try {
         const todos = await Todo.find();
         res.json({
@@ -10,4 +10,4 @@ module.exports = async function (req, res) {
     } catch (e) {
         res.status(500).end(e);
     }
-};
+}

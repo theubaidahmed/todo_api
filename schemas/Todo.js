@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import { mongoose } from 'mongoose';
 
 const Task = new mongoose.Schema({
     task: { type: String, minlength: 3, maxlength: 30, required: true },
@@ -13,8 +13,8 @@ const Todo = new mongoose.Schema({
     createdAt: { type: Date, default: new Date(), required: true },
 });
 
-Todo.virtual("completed").get(function () {
+Todo.virtual('completed').get(function () {
     return this.tasks.every(task => task.completed);
 });
 
-module.exports = mongoose.model("todo", Todo);
+export default mongoose.model('todo', Todo);
